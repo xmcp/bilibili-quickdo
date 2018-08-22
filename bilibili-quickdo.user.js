@@ -154,12 +154,12 @@ https://github.com/jeayu/bilibili-quickdo/blob/master/README.md#更新历史
             var oldDanmuBtn = $('.bilibili-player-video-btn-danmaku[name^="ctlbar_danmuku"]');
             if (keyCode === this.getKeyCode('addSpeed') && h5Player.playbackRate < 4) {
                 h5Player.playbackRate += 0.25;
-                this.showInfoAnimate(h5Player.playbackRate + ' X');
+                this.showInfoAnimate(h5Player.playbackRate + ' x');
             } else if (keyCode === this.getKeyCode('subSpeed') && h5Player.playbackRate > 0.5) {
                 h5Player.playbackRate -= 0.25;
-                this.showInfoAnimate(h5Player.playbackRate + ' X');
+                this.showInfoAnimate(h5Player.playbackRate + ' x');
             } else if(keyCode === this.getKeyCode('resetSpeed')) {
-               player.playbackRate = 1;
+               h5Player.playbackRate = 1;
                this.showInfoAnimate(player.playbackRate + ' x');
             } else if (keyCode === this.getKeyCode('skip')) {
                 h5Player.currentTime+=82;
