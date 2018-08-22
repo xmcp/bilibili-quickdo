@@ -160,7 +160,7 @@ https://github.com/jeayu/bilibili-quickdo/blob/master/README.md#更新历史
                 this.showInfoAnimate(h5Player.playbackRate + ' x');
             } else if(keyCode === this.getKeyCode('resetSpeed')) {
                h5Player.playbackRate = 1;
-               this.showInfoAnimate(player.playbackRate + ' x');
+               this.showInfoAnimate(h5Player.playbackRate + ' x');
             } else if (keyCode === this.getKeyCode('skip')) {
                 h5Player.currentTime+=82;
                 this.showInfoAnimate('快进');
