@@ -112,6 +112,7 @@ https://github.com/jeayu/bilibili-quickdo/blob/master/README.md#更新历史
             },
         },
         dblclickFullscreen: function () {
+            return;
             player.addEventListener('dblclick', () => {
                 this.keyHandler(this.getKeyCode('fullscreen'));
             });
@@ -230,8 +231,6 @@ https://github.com/jeayu/bilibili-quickdo/blob/master/README.md#更新历史
                         $('#bilibiliPlayer').addClass('mode-light-off');
                     }
                 }
-            } else if (keyCode >= this.keyCode['0'] && keyCode <= this.keyCode['9']) {
-               h5Player.currentTime = h5Player.duration / 10 * (keyCode - this.keyCode['0']);
             } else {
                 this.partHandler(keyCode);
             }
