@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         bilibili  H5播放器快捷操作 xmcp fork
 // @namespace    https://github.com/xmcp/bilibili-quickdo
-// @version      0.9.4
+// @version      1.9.4.1
 // @description  自动化设置,回车快速发弹幕、双击全屏,'+','-'调节播放速度、f键全屏、w键网页全屏、p键暂停/播放、d键开/关弹幕、y键关/开灯、I键、O键左右旋转等
 // @author       jeayu, xmcp
 // @license      MIT
@@ -511,7 +511,7 @@ https://github.com/jeayu/bilibili-quickdo/blob/master/README.md#更新历史
         },
         init: function () {
             new MutationObserver((mutations, observer) => {
-                mutations.forEach((mutation) => {
+                 $ && mutations.forEach((mutation) => {
                     let danmu;
                     let target = $(mutation.target);
                     if (mutation.previousSibling && target.attr('stage') === '1') {
@@ -535,7 +535,7 @@ https://github.com/jeayu/bilibili-quickdo/blob/master/README.md#更新历史
                         danmu = target;
                     }
                 });
-            }).observe($('body')[0], {
+            }).observe(document.body, {
                 childList: true,
                 subtree: true,
             });
