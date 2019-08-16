@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         bilibili  H5播放器快捷操作 xmcp fork
 // @namespace    https://github.com/xmcp/bilibili-quickdo
-// @version      1.9.4.1
+// @version      1.9.4.2
 // @description  自动化设置,回车快速发弹幕、双击全屏,'+','-'调节播放速度、f键全屏、w键网页全屏、p键暂停/播放、d键开/关弹幕、y键关/开灯、I键、O键左右旋转等
 // @author       jeayu, xmcp
 // @license      MIT
@@ -142,7 +142,8 @@ https://github.com/jeayu/bilibili-quickdo/blob/master/README.md#更新历史
                     this.pushDanmuHandler(e.keyCode);
                 } else {
                     if (!e.ctrlKey && !e.shiftKey) {
-                        this.keyHandler(e.keyCode);
+                        if(this.keyHandler(e.keyCode)==='break')
+                            e.stopPropagation();
                     }
                 }
             });
@@ -156,9 +157,11 @@ https://github.com/jeayu/bilibili-quickdo/blob/master/README.md#更新历史
             if (keyCode === this.getKeyCode('addSpeed') && h5Player.playbackRate < 4) {
                 h5Player.playbackRate += 0.25;
                 this.showInfoAnimate(h5Player.playbackRate + ' x');
+                return 'break';
             } else if (keyCode === this.getKeyCode('subSpeed') && h5Player.playbackRate > 0.5) {
                 h5Player.playbackRate -= 0.25;
                 this.showInfoAnimate(h5Player.playbackRate + ' x');
+                return 'break';
             } else if(keyCode === this.getKeyCode('resetSpeed')) {
                h5Player.playbackRate = 1;
                this.showInfoAnimate(h5Player.playbackRate + ' x');
@@ -176,6 +179,7 @@ https://github.com/jeayu/bilibili-quickdo/blob/master/README.md#更新历史
                     ? $('#heimu').css('display', 'block')
                     : $('#heimu').css('display', '');
                 }
+                return 'break';
             } else if (keyCode === this.getKeyCode('webFullscreen')) {
                 $('.bilibili-player-video-web-fullscreen').click();
             } else if (keyCode === this.getKeyCode('widescreen')) {
