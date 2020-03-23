@@ -7,7 +7,7 @@
 // @license      MIT
 // @match        *://www.bilibili.com/bangumi/play/ep*
 // @match        *://www.bilibili.com/bangumi/play/ss*
-// @match        *://www.bilibili.com/video/av*
+// @match        *://www.bilibili.com/video/*
 // @match        *://www.bilibili.com/watchlater/*
 // @grant        GM_setValue
 // @grant        GM_getValue
@@ -154,12 +154,14 @@ https://github.com/jeayu/bilibili-quickdo/blob/master/README.md#更新历史
             var newDanmuSetting = $('.bilibili-player-video-danmaku-setting');
             var newDanmuBtn = $(".bilibili-player-video-danmaku-switch input");
             var oldDanmuBtn = $('.bilibili-player-video-btn-danmaku[name^="ctlbar_danmuku"]');
-            if (keyCode === this.getKeyCode('addSpeed') && h5Player.playbackRate < 4) {
-                h5Player.playbackRate += 0.25;
+            if (keyCode === this.getKeyCode('addSpeed')) {
+                if(h5Player.playbackRate < 4)
+                    h5Player.playbackRate += 0.25;
                 this.showInfoAnimate(h5Player.playbackRate + ' x');
                 return 'break';
-            } else if (keyCode === this.getKeyCode('subSpeed') && h5Player.playbackRate > 0.5) {
-                h5Player.playbackRate -= 0.25;
+            } else if (keyCode === this.getKeyCode('subSpeed')) {
+                if(h5Player.playbackRate > 0.5)
+                    h5Player.playbackRate -= 0.25;
                 this.showInfoAnimate(h5Player.playbackRate + ' x');
                 return 'break';
             } else if(keyCode === this.getKeyCode('resetSpeed')) {
